@@ -9,7 +9,7 @@
         android:id="@+id/sky"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.61"
+        android:layout_weight="0.5"
         android:background="@color/blue_sky">
 
         <ImageView
@@ -20,9 +20,20 @@
             android:src="@drawable/sun" />
     </FrameLayout>
 
-    <View
+    <FrameLayout
+        android:id="@+id/sea"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.39"
-        android:background="@color/sea" />
+        android:layout_weight="0.5"
+        android:background="@color/sea">
+
+        <ImageView
+            android:id="@+id/inverted_sun"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:alpha="0.7"
+            android:src="@drawable/sun" />
+    </FrameLayout>
+
 </LinearLayout>
