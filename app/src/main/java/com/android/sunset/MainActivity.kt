@@ -1,11 +1,13 @@
 package com.android.sunset
 
+import android.animation.AnimatorSet
 import android.animation.ArgbEvaluator
 import android.animation.ObjectAnimator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AccelerateInterpolator
+import android.view.animation.AnimationSet
 import androidx.core.content.ContextCompat
 
 class MainActivity : AppCompatActivity() {
@@ -55,7 +57,14 @@ class MainActivity : AppCompatActivity() {
                 .setDuration(3000)
         sunsetSkyAnimator.setEvaluator(ArgbEvaluator())//解决屏闪问题
 
-        heightAnimator.start()
-        sunsetSkyAnimator.start()
+        /*夜空颜色变换*/
+        val nightSkyAnimator =
+            ObjectAnimator.ofInt(skyView, "backgroundColor", sunsetSkyColor, nightSkyColor)
+                .setDuration(3000)
+        nightSkyAnimator.setEvaluator(ArgbEvaluator())
+
+        val animatorSet = AnimatorSet()
+        animatorSet.play(heightAnimator).with(sunsetSkyAnimator).before(nightSkyAnimator)
+        animatorSet.start()
     }
 }
