@@ -118,7 +118,7 @@ class MainActivity : AppCompatActivity() {
             ObjectAnimator.ofFloat(sunView, "rotation", 360f, 0f).setDuration(3000);
 
         val sunYStart = sunView.top.toFloat()
-        val sunYEnd = skyView.height.toFloat()
+        val sunYEnd = skyView.height.toFloat().plus(75)//有放大效果，落日到边界后没有完全淹没，+75解决，怎么获取太阳增加的半径？？
 
         //太阳日落
         val heightAnimatorDown =
